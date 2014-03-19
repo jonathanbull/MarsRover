@@ -86,7 +86,7 @@ namespace MarsRover
 
         public void DeployTo(Planet planet)
         {
-
+            this.DeployedTo = planet;
         }
 
         public Rover()
