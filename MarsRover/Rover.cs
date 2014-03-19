@@ -31,6 +31,16 @@ namespace MarsRover
                     this.Position.X -= gridPoints;
                     break;
             }
+
+            // Bounds wrapping
+            if (this.Position.Y > this.DeployedTo.Size.Height)
+            {
+                this.Position.Y = 0;
+            }
+            else if (this.Position.Y < 0)
+            {
+                this.Position.Y = this.DeployedTo.Size.Height;
+            }
         }
 
         private void Turn(Movement.TurningDirection turn)
