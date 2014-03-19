@@ -33,7 +33,15 @@ namespace MarsRover
             }
 
             // Bounds wrapping
-            if (this.Position.Y > this.DeployedTo.Size.Height)
+            if (this.Position.X > this.DeployedTo.Size.Width)
+            {
+                this.Position.X = 0;
+            }
+            else if (this.Position.X < 0)
+            {
+                this.Position.X = this.DeployedTo.Size.Width;
+            }
+            else if (this.Position.Y > this.DeployedTo.Size.Height)
             {
                 this.Position.Y = 0;
             }
