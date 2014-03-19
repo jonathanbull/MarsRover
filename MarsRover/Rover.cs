@@ -53,7 +53,7 @@ namespace MarsRover
             // Detect collision
             if (this.DeployedTo.HasObstacleAtPosition(this.Position))
             {
-                throw new Exception();
+                throw new DetectedObstacleException();
             }
         }
 
