@@ -10,6 +10,16 @@ namespace MarsRover
     {
         public Position Position { get; set; }
 
+        private void Turn(Direction.Turning turn)
+        {
+            switch (turn)
+            {
+                case Direction.Turning.Right:
+                    this.Position.CardinalDirection += 1;
+                    break;
+            }
+        }
+
         public void Command(string commands)
         {
             foreach (char command in commands)
@@ -21,6 +31,9 @@ namespace MarsRover
                         break;
                     case 'B':
                         this.Position.Y -= 1;
+                        break;
+                    case 'R':
+                        this.Turn(Direction.Turning.Right);
                         break;
                 }
             }

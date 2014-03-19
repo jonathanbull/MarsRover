@@ -15,5 +15,11 @@ namespace MarsRover
             South,
             West
         }
+
+        public enum Turning
+        {
+            Right,
+            Left
+        }
     }
 }
