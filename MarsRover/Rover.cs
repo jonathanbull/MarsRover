@@ -104,6 +104,8 @@ namespace MarsRover
                     case 'L':
                         this.Turn(Movement.TurningDirection.Left);
                         break;
+                    default:
+                        throw new ArgumentException(String.Format("'{0}' is an invalid command.", command));
                 }
             }
         }
