@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace MarsRover
 {
-    public class Rover : IRover
+    public class Direction
     {
-        public Position Position { get; set; }
-
-        public void Command(string commands)
+        public enum Cardinal
         {
+            North,
+            East,
+            South,
+            West
         }
     }
 }

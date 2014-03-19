@@ -17,5 +17,34 @@ namespace MarsRover.Tests
         {
             iRover = new Rover();
         }
+
+        [TestCase(0, 0, Direction.Cardinal.North, "F", 0, 1, Direction.Cardinal.North)]
+        public void IssueCommandAndVerifyPosition(
+            int startingXPosition,
+            int startingYPosition,
+            Direction.Cardinal startingCardinalDirection,
+            string command,
+            int expectedXPosition,
+            int expectedYPosition,
+            Direction.Cardinal expectedCardinalDirection)
+        {
+            iRover.Position = new Position
+            {
+                X = startingXPosition,
+                Y = startingYPosition,
+                CardinalDirection = startingCardinalDirection
+            };
+
+            var expectedPosition = new Position
+            {
+                X = expectedXPosition,
+                Y = expectedYPosition,
+                CardinalDirection = expectedCardinalDirection
+            };
+
+            iRover.Command(command);
+
+            Assert.AreEqual(expectedPosition, iRover.Position);
+        }
     }
 }

@@ -8,5 +8,8 @@ namespace MarsRover
 {
     public interface IRover
     {
+        Position Position { get; set; }
+
+        void Command(string commands);
     }
 }
