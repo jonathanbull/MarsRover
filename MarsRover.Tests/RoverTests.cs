@@ -20,6 +20,7 @@ namespace MarsRover.Tests
 
         [TestCase(0, 0, Direction.Cardinal.North, "F", 0, 1, Direction.Cardinal.North)]
         [TestCase(0, 0, Direction.Cardinal.North, "FFB", 0, 1, Direction.Cardinal.North)]
+        [TestCase(0, 0, Direction.Cardinal.North, "R", 0, 0, Direction.Cardinal.East)]
         public void IssueCommandAndVerifyPosition(
             int startingXPosition,
             int startingYPosition,
