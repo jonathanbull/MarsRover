@@ -10,26 +10,47 @@ namespace MarsRover
     {
         public Position Position { get; set; }
 
-        private void Turn(Direction.Turning turn)
+        private void Move(Movement.Direction direction)
+        {
+            int gridPoints = direction == Movement.Direction.Forwards ? 1 : -1;
+
+            switch (this.Position.CardinalDirection)
+            {
+                case Movement.CardinalDirection.North:
+                    this.Position.Y += gridPoints;
+                    break;
+                case Movement.CardinalDirection.East:
+                    this.Position.X += gridPoints;
+                    break;
+                case Movement.CardinalDirection.South:
+                    this.Position.Y -= gridPoints;
+                    break;
+                case Movement.CardinalDirection.West:
+                    this.Position.X -= gridPoints;
+                    break;
+            }
+        }
+
+        private void Turn(Movement.TurningDirection turn)
         {
             switch (turn)
             {
-                case Direction.Turning.Right:
-                    if (this.Position.CardinalDirection == Direction.Cardinal.West)
+                case Movement.TurningDirection.Right:
+                    if (this.Position.CardinalDirection == Movement.CardinalDirection.West)
                     {
                         // Bounds wrapping
-                        this.Position.CardinalDirection = Direction.Cardinal.North;
+                        this.Position.CardinalDirection = Movement.CardinalDirection.North;
                     }
                     else
                     {
                         this.Position.CardinalDirection += 1;
                     }
                     break;
-                case Direction.Turning.Left:
-                    if (this.Position.CardinalDirection == Direction.Cardinal.North)
+                case Movement.TurningDirection.Left:
+                    if (this.Position.CardinalDirection == Movement.CardinalDirection.North)
                     {
                         // Bounds wrapping
-                        this.Position.CardinalDirection = Direction.Cardinal.West;
+                        this.Position.CardinalDirection = Movement.CardinalDirection.West;
                     }
                     else
                     {
@@ -46,16 +67,16 @@ namespace MarsRover
                 switch (command)
                 {
                     case 'F':
-                        this.Position.Y += 1;
+                        this.Move(Movement.Direction.Forwards);
                         break;
                     case 'B':
-                        this.Position.Y -= 1;
+                        this.Move(Movement.Direction.Backwards);
                         break;
                     case 'R':
-                        this.Turn(Direction.Turning.Right);
+                        this.Turn(Movement.TurningDirection.Right);
                         break;
                     case 'L':
-                        this.Turn(Direction.Turning.Left);
+                        this.Turn(Movement.TurningDirection.Left);
                         break;
                 }
             }

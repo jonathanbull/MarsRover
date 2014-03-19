@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace MarsRover
 {
-    public class Direction
+    public class Movement
     {
-        public enum Cardinal
+        public enum Direction
+        {
+            Forwards,
+            Backwards
+        }
+
+        public enum CardinalDirection
         {
             North,
             East,
@@ -16,7 +22,7 @@ namespace MarsRover
             West
         }
 
-        public enum Turning
+        public enum TurningDirection
         {
             Right,
             Left

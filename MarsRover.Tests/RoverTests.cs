@@ -18,21 +18,21 @@ namespace MarsRover.Tests
             iRover = new Rover();
         }
 
-        [TestCase(0, 0, Direction.Cardinal.North, "F", 0, 1, Direction.Cardinal.North)]
-        [TestCase(0, 0, Direction.Cardinal.North, "FFB", 0, 1, Direction.Cardinal.North)]
-        [TestCase(0, 0, Direction.Cardinal.North, "R", 0, 0, Direction.Cardinal.East)]
-        [TestCase(0, 0, Direction.Cardinal.South, "L", 0, 0, Direction.Cardinal.East)]
-        [TestCase(0, 0, Direction.Cardinal.West, "R", 0, 0, Direction.Cardinal.North)]
-        [TestCase(0, 0, Direction.Cardinal.North, "L", 0, 0, Direction.Cardinal.West)]
-        [TestCase(0, 0, Direction.Cardinal.North, "FFRFF", 2, 2, Direction.Cardinal.East)]
+        [TestCase(0, 0, Movement.CardinalDirection.North, "F", 0, 1, Movement.CardinalDirection.North)]
+        [TestCase(0, 0, Movement.CardinalDirection.North, "FFB", 0, 1, Movement.CardinalDirection.North)]
+        [TestCase(0, 0, Movement.CardinalDirection.North, "R", 0, 0, Movement.CardinalDirection.East)]
+        [TestCase(0, 0, Movement.CardinalDirection.South, "L", 0, 0, Movement.CardinalDirection.East)]
+        [TestCase(0, 0, Movement.CardinalDirection.West, "R", 0, 0, Movement.CardinalDirection.North)]
+        [TestCase(0, 0, Movement.CardinalDirection.North, "L", 0, 0, Movement.CardinalDirection.West)]
+        [TestCase(0, 0, Movement.CardinalDirection.North, "FFRFF", 2, 2, Movement.CardinalDirection.East)]
         public void IssueCommandAndVerifyPosition(
             int startingXPosition,
             int startingYPosition,
-            Direction.Cardinal startingCardinalDirection,
+            Movement.CardinalDirection startingCardinalDirection,
             string command,
             int expectedXPosition,
             int expectedYPosition,
-            Direction.Cardinal expectedCardinalDirection)
+            Movement.CardinalDirection expectedCardinalDirection)
         {
             iRover.Position = new Position
             {

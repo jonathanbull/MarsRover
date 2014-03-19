@@ -12,7 +12,7 @@ namespace MarsRover
 
         public int Y { get; set; }
 
-        public Direction.Cardinal CardinalDirection { get; set; }
+        public Movement.CardinalDirection CardinalDirection { get; set; }
 
         public override bool Equals(object comparisonObject)
         {
