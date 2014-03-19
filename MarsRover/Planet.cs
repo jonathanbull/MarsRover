@@ -37,7 +37,9 @@ namespace MarsRover
 
         public bool HasObstacleAtPosition(Position position)
         {
-            return this.Obstacles != null && this.Obstacles.Any(o => o.Value.X == position.X && o.Value.Y == position.Y);
+            return
+                this.Obstacles != null &&
+                this.Obstacles.Any(o => o.Value.Point.X == position.Point.X && o.Value.Point.Y == position.Point.Y);
         }
     }
 }

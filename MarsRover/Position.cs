@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,7 @@ namespace MarsRover
 {
     public class Position
     {
-        public int X { get; set; }
-
-        public int Y { get; set; }
+        public Point Point { get; set; }
 
         public Movement.CardinalDirection CardinalDirection { get; set; }
 
@@ -28,21 +27,19 @@ namespace MarsRover
             }
 
             return
-                this.X == comparisonPosition.X &&
-                this.Y == comparisonPosition.Y &&
+                this.Point.X == comparisonPosition.Point.X &&
+                this.Point.Y == comparisonPosition.Point.Y &&
                 this.CardinalDirection == comparisonPosition.CardinalDirection;
         }
 
         public Position(int x, int y)
         {
-            this.X = x;
-            this.Y = y;
+            this.Point = new Point(x, y);
         }
 
         public Position(int x, int y, Movement.CardinalDirection cardinalDirection)
         {
-            this.X = x;
-            this.Y = y;
+            this.Point = new Point(x, y);
             this.CardinalDirection = cardinalDirection;
         }
     }

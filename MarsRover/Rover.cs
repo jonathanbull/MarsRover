@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,35 +20,35 @@ namespace MarsRover
             switch (this.Position.CardinalDirection)
             {
                 case Movement.CardinalDirection.North:
-                    this.Position.Y += gridPoints;
+                    this.Position.Point = new Point(this.Position.Point.X, this.Position.Point.Y + gridPoints);
                     break;
                 case Movement.CardinalDirection.East:
-                    this.Position.X += gridPoints;
+                    this.Position.Point = new Point(this.Position.Point.X + gridPoints, this.Position.Point.Y);
                     break;
                 case Movement.CardinalDirection.South:
-                    this.Position.Y -= gridPoints;
+                    this.Position.Point = new Point(this.Position.Point.X, this.Position.Point.Y - gridPoints);
                     break;
                 case Movement.CardinalDirection.West:
-                    this.Position.X -= gridPoints;
+                    this.Position.Point = new Point(this.Position.Point.X - gridPoints, this.Position.Point.Y);
                     break;
             }
 
             // Bounds wrapping
-            if (this.Position.X > this.DeployedTo.Size.Width)
+            if (this.Position.Point.X > this.DeployedTo.Size.Width)
             {
-                this.Position.X = 0;
+                this.Position.Point = new Point(0, this.Position.Point.Y);
             }
-            else if (this.Position.X < 0)
+            else if (this.Position.Point.X < 0)
             {
-                this.Position.X = this.DeployedTo.Size.Width;
+                this.Position.Point = new Point(this.DeployedTo.Size.Width, this.Position.Point.Y);
             }
-            else if (this.Position.Y > this.DeployedTo.Size.Height)
+            else if (this.Position.Point.Y > this.DeployedTo.Size.Height)
             {
-                this.Position.Y = 0;
+                this.Position.Point = new Point(this.Position.Point.X, 0);
             }
-            else if (this.Position.Y < 0)
+            else if (this.Position.Point.Y < 0)
             {
-                this.Position.Y = this.DeployedTo.Size.Height;
+                this.Position.Point = new Point(this.Position.Point.X, this.DeployedTo.Size.Height);
             }
 
             // Detect collision
