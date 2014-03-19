@@ -13,7 +13,7 @@ namespace MarsRover
 
         IDictionary<Obstacle, Position> Obstacles { get; set; }
 
-        void SetSize(int height, int width);
+        void SetSize(int width, int height);
 
         void AddObstacle(Obstacle obstacle, int xPoint, int yPoint);
 
