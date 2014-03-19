@@ -43,6 +43,7 @@
     <Compile Include="Movement.cs" />
     <Compile Include="IRover.cs" />
     <Compile Include="IPlanet.cs" />
+    <Compile Include="Obstacle.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

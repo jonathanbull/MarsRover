@@ -11,9 +11,16 @@ namespace MarsRover
     {
         public Size Size { get; set; }
 
+        public IList<Obstacle> Obstacles { get; set; }
+
         public void SetSize(int width, int height)
         {
             this.Size = new Size(width, height);
+        }
+
+        public void AddObstacle(Obstacle obstacle)
+        {
+
         }
     }
 }
