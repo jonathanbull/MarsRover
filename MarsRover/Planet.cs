@@ -15,7 +15,7 @@ namespace MarsRover
 
         public void SetSize(int width, int height)
         {
-            if (width < 1)
+            if (width < 1 || height < 1)
             {
                 throw new ArgumentOutOfRangeException();
             }
