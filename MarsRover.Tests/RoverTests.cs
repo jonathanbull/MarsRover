@@ -56,7 +56,7 @@ namespace MarsRover.Tests
         [Test]
         public void DeployToPlanet()
         {
-            iRover.DeployTo(new Planet());
+            iRover.DeployTo(new Planet(50, 50));
             Assert.IsNotNull(iRover.DeployedTo);
         }
     }
