@@ -52,5 +52,12 @@ namespace MarsRover.Tests
 
             Assert.AreEqual(expectedPosition, iRover.Position);
         }
+
+        [Test]
+        public void DeployToPlanet()
+        {
+            iRover.DeployTo(new Planet());
+            Assert.IsNotNull(iRover.DeployedTo);
+        }
     }
 }

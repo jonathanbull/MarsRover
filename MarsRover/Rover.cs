@@ -8,6 +8,8 @@ namespace MarsRover
 {
     public class Rover : IRover
     {
+        public Planet DeployedTo { get; set; }
+
         public Position Position { get; set; }
 
         private void Move(Movement.Direction direction)
@@ -80,6 +82,11 @@ namespace MarsRover
                         break;
                 }
             }
+        }
+
+        public void DeployTo(Planet planet)
+        {
+
         }
 
         public Rover()
