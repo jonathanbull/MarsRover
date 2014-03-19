@@ -15,6 +15,11 @@ namespace MarsRover
 
         public void SetSize(int width, int height)
         {
+            if (width < 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             this.Size = new Size(width, height);
         }
 
