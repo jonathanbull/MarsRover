@@ -13,5 +13,24 @@ namespace MarsRover
         public int Y { get; set; }
 
         public Direction.Cardinal CardinalDirection { get; set; }
+
+        public override bool Equals(object comparisonObject)
+        {
+            if (comparisonObject == null)
+            {
+                return false;
+            }
+
+            var comparisonPosition = comparisonObject as Position;
+            if (comparisonPosition == null)
+            {
+                return false;
+            }
+
+            return
+                this.X == comparisonPosition.X &&
+                this.Y == comparisonPosition.Y &&
+                this.CardinalDirection == comparisonPosition.CardinalDirection;
+        }
     }
 }
