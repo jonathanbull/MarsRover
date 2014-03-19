@@ -20,7 +20,12 @@ namespace MarsRover
 
         public void AddObstacle(Obstacle obstacle)
         {
+            if (this.Obstacles == null)
+            {
+                this.Obstacles = new List<Obstacle>();
+            }
 
+            this.Obstacles.Add(obstacle);
         }
     }
 }
