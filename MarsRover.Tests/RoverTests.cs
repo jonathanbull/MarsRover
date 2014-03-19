@@ -62,6 +62,16 @@ namespace MarsRover.Tests
             Assert.Throws<DetectedObstacleException>(() => iRover.Command(command));
         }
 
+        [TestCase("F6BBB")]
+        [TestCase(" F ")]
+        [TestCase("ABC")]
+        [TestCase("012345")]
+        [TestCase("FFBB<FFBB")]
+        public void IssueErroneousCommand(string command)
+        {
+            Assert.Throws<ArgumentException>(() => iRover.Command(command));
+        }
+
         [Test]
         public void DeployToPlanet()
         {
