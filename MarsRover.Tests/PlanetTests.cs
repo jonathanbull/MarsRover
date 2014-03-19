@@ -44,5 +44,11 @@ namespace MarsRover.Tests
 
             Assert.AreEqual(iPlanet.Obstacles.First().Value, expectedPosition);
         }
+
+        [Test]
+        public void SetWidthOutOfRange()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => iPlanet.SetSize(-1, 100));
+        }
     }
 }
