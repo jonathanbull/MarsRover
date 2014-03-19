@@ -115,7 +115,7 @@ namespace MarsRover
 
         public Rover()
         {
-            this.Position = new Position();
+            this.Position = new Position(0, 0);
         }
     }
 }

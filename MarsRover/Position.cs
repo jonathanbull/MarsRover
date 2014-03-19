@@ -32,5 +32,18 @@ namespace MarsRover
                 this.Y == comparisonPosition.Y &&
                 this.CardinalDirection == comparisonPosition.CardinalDirection;
         }
+
+        public Position(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+
+        public Position(int x, int y, Movement.CardinalDirection cardinalDirection)
+        {
+            this.X = x;
+            this.Y = y;
+            this.CardinalDirection = cardinalDirection;
+        }
     }
 }

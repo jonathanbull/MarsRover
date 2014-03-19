@@ -41,19 +41,9 @@ namespace MarsRover.Tests
             int expectedYPosition,
             Movement.CardinalDirection expectedCardinalDirection)
         {
-            iRover.Position = new Position
-            {
-                X = startingXPosition,
-                Y = startingYPosition,
-                CardinalDirection = startingCardinalDirection
-            };
+            iRover.Position = new Position(startingXPosition, startingYPosition, startingCardinalDirection);
 
-            var expectedPosition = new Position
-            {
-                X = expectedXPosition,
-                Y = expectedYPosition,
-                CardinalDirection = expectedCardinalDirection
-            };
+            var expectedPosition = new Position(expectedXPosition, expectedYPosition, expectedCardinalDirection);
 
             iRover.Command(command);
 
