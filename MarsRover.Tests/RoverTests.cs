@@ -59,7 +59,7 @@ namespace MarsRover.Tests
         {
             iPlanet.AddObstacle(new Obstacle(), obstacleAtPositionX, obstacleAtPositionY);
 
-            Assert.Throws<Exception>(() => iRover.Command(command));
+            Assert.Throws<DetectedObstacleException>(() => iRover.Command(command));
         }
 
         [Test]
