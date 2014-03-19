@@ -50,7 +50,7 @@ namespace MarsRover
                 this.Position.Y = this.DeployedTo.Size.Height;
             }
 
-            // Detect colission
+            // Detect collision
             if (this.DeployedTo.HasObstacleAtPosition(this.Position))
             {
                 throw new Exception();
