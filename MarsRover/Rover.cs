@@ -49,6 +49,12 @@ namespace MarsRover
             {
                 this.Position.Y = this.DeployedTo.Size.Height;
             }
+
+            // Detect colission
+            if (this.DeployedTo.HasObstacleAtPosition(this.Position))
+            {
+                throw new Exception();
+            }
         }
 
         private void Turn(Movement.TurningDirection turn)
