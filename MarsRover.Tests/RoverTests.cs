@@ -60,7 +60,11 @@ namespace MarsRover.Tests
             Assert.AreEqual(expectedPosition, iRover.Position);
         }
 
-        [TestCase("F", 0, 1)]
+        [TestCase("RF", 1, 0)]
+        [TestCase("B", 0, 50)]
+        [TestCase("LFFF", 100, 0)]
+        [TestCase("RFLFFFLF", 1, 3)]
+        [TestCase("BLF", 100, 50)]
         public void IssueCommandAndCheckObstacleCollision(string command, int obstacleAtPositionX, int obstacleAtPositionY)
         {
             iPlanet.AddObstacle(new Obstacle(), obstacleAtPositionX, obstacleAtPositionY);
