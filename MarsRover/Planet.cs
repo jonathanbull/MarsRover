@@ -25,7 +25,11 @@ namespace MarsRover
                 this.Obstacles = new Dictionary<Obstacle, Position>();
             }
 
-            var position = new Position();
+            var position = new Position
+            {
+                X = xPoint,
+                Y = yPoint
+            };
 
             this.Obstacles.Add(obstacle, position);
         }
