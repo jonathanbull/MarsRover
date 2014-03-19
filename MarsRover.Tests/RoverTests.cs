@@ -16,6 +16,7 @@ namespace MarsRover.Tests
         public void SetUp()
         {
             iRover = new Rover();
+            iRover.DeployTo(new Planet(100, 50));
         }
 
         [TestCase(0, 0, Movement.CardinalDirection.North, "F", 0, 1, Movement.CardinalDirection.North)]
@@ -25,6 +26,7 @@ namespace MarsRover.Tests
         [TestCase(0, 0, Movement.CardinalDirection.West, "R", 0, 0, Movement.CardinalDirection.North)]
         [TestCase(0, 0, Movement.CardinalDirection.North, "L", 0, 0, Movement.CardinalDirection.West)]
         [TestCase(0, 0, Movement.CardinalDirection.North, "FFRFF", 2, 2, Movement.CardinalDirection.East)]
+        [TestCase(0, 50, Movement.CardinalDirection.North, "F", 0, 0, Movement.CardinalDirection.North)]
         public void IssueCommandAndVerifyPosition(
             int startingXPosition,
             int startingYPosition,
