@@ -15,7 +15,15 @@ namespace MarsRover
             switch (turn)
             {
                 case Direction.Turning.Right:
-                    this.Position.CardinalDirection += 1;
+                    if (this.Position.CardinalDirection == Direction.Cardinal.West)
+                    {
+                        // Bounds wrapping
+                        this.Position.CardinalDirection = Direction.Cardinal.North;
+                    }
+                    else
+                    {
+                        this.Position.CardinalDirection += 1;
+                    }
                     break;
                 case Direction.Turning.Left:
                     this.Position.CardinalDirection -= 1;
