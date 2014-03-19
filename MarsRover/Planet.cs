@@ -13,7 +13,7 @@ namespace MarsRover
 
         public Planet(int width, int height)
         {
-            
+            this.Size = new Size(width, height);
         }
     }
 }
