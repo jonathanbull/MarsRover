@@ -55,7 +55,7 @@ namespace MarsRover.Tests
         [TestCase("LFFF", 100, 0)]
         [TestCase("RFLFFFLF", 1, 3)]
         [TestCase("BLF", 100, 50)]
-        public void IssueCommandAndCheckObstacleCollision(string command, int obstacleAtPositionX, int obstacleAtPositionY)
+        public void IssueCommandAndCheckObstacleDetection(string command, int obstacleAtPositionX, int obstacleAtPositionY)
         {
             iPlanet.AddObstacle(new Obstacle(), obstacleAtPositionX, obstacleAtPositionY);
 
