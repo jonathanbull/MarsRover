@@ -8,12 +8,12 @@ namespace MarsRover
 {
     public interface IRover
     {
-        Planet DeployedTo { get; set; }
+        IPlanet DeployedTo { get; set; }
 
         Position Position { get; set; }
 
         void Command(string commands);
 
-        void DeployTo(Planet planet);
+        void DeployTo(IPlanet planet);
     }
 }

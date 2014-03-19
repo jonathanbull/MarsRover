@@ -16,7 +16,8 @@ namespace MarsRover.Tests
         {
             var expectedSize = new Size(width, height);
 
-            var planet = new Planet(width, height);
+            var planet = new Planet();
+            planet.SetSize(width, height);
             Assert.AreEqual(planet.Size, expectedSize);
         }
     }

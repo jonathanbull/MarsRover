@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MarsRover
 {
-    public class Planet
+    public class Planet : IPlanet
     {
         public Size Size { get; set; }
 
-        public Planet(int width, int height)
+        public void SetSize(int width, int height)
         {
             this.Size = new Size(width, height);
         }

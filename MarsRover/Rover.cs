@@ -8,7 +8,7 @@ namespace MarsRover
 {
     public class Rover : IRover
     {
-        public Planet DeployedTo { get; set; }
+        public IPlanet DeployedTo { get; set; }
 
         public Position Position { get; set; }
 
@@ -102,7 +102,7 @@ namespace MarsRover
             }
         }
 
-        public void DeployTo(Planet planet)
+        public void DeployTo(IPlanet planet)
         {
             this.DeployedTo = planet;
         }

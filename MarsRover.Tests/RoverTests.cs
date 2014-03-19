@@ -11,12 +11,16 @@ namespace MarsRover.Tests
     public class RoverTests
     {
         IRover iRover;
+        IPlanet iPlanet;
 
         [SetUp]
         public void SetUp()
         {
+            iPlanet = new Planet();
+            iPlanet.SetSize(100, 50);
+
             iRover = new Rover();
-            iRover.DeployTo(new Planet(100, 50));
+            iRover.DeployTo(iPlanet);
         }
 
         [TestCase(0, 0, Movement.CardinalDirection.North, "F", 0, 1, Movement.CardinalDirection.North)]
@@ -59,7 +63,9 @@ namespace MarsRover.Tests
         [Test]
         public void DeployToPlanet()
         {
-            iRover.DeployTo(new Planet(50, 50));
+            var planet = new Planet();
+            planet.SetSize(100, 50);
+            iRover.DeployTo(planet);
             Assert.IsNotNull(iRover.DeployedTo);
         }
     }
