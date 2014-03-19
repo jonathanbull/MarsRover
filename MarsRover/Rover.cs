@@ -17,6 +17,9 @@ namespace MarsRover
                 case Direction.Turning.Right:
                     this.Position.CardinalDirection += 1;
                     break;
+                case Direction.Turning.Left:
+                    this.Position.CardinalDirection -= 1;
+                    break;
             }
         }
 
@@ -34,6 +37,9 @@ namespace MarsRover
                         break;
                     case 'R':
                         this.Turn(Direction.Turning.Right);
+                        break;
+                    case 'L':
+                        this.Turn(Direction.Turning.Left);
                         break;
                 }
             }
