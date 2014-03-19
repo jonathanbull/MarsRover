@@ -11,21 +11,23 @@ namespace MarsRover
     {
         public Size Size { get; set; }
 
-        public IList<Obstacle> Obstacles { get; set; }
+        public IDictionary<Obstacle, Position> Obstacles { get; set; }
 
         public void SetSize(int width, int height)
         {
             this.Size = new Size(width, height);
         }
 
-        public void AddObstacle(Obstacle obstacle)
+        public void AddObstacle(Obstacle obstacle, int xPoint, int yPoint)
         {
             if (this.Obstacles == null)
             {
-                this.Obstacles = new List<Obstacle>();
+                this.Obstacles = new Dictionary<Obstacle, Position>();
             }
 
-            this.Obstacles.Add(obstacle);
+            var position = new Position();
+
+            this.Obstacles.Add(obstacle, position);
         }
     }
 }

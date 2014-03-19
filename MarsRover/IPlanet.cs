@@ -11,10 +11,10 @@ namespace MarsRover
     {
         Size Size { get; set; }
 
-        IList<Obstacle> Obstacles { get; set; }
+        IDictionary<Obstacle, Position> Obstacles { get; set; }
 
         void SetSize(int height, int width);
 
-        void AddObstacle(Obstacle obstacle);
+        void AddObstacle(Obstacle obstacle, int xPoint, int yPoint);
     }
 }

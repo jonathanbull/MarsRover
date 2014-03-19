@@ -31,9 +31,22 @@ namespace MarsRover.Tests
         [Test]
         public void AddObstacle()
         {
-            iPlanet.AddObstacle(new Obstacle());
+            iPlanet.AddObstacle(new Obstacle(), 0, 0);
 
             Assert.IsTrue(iPlanet.Obstacles.Any());
+        }
+
+        [TestCase(5, 5)]
+        public void AddObstacleAtPosition(int xPoint, int yPoint)
+        {
+            var expectedPosition = new Position
+            {
+                X = xPoint,
+                Y = yPoint
+            };
+            iPlanet.AddObstacle(new Obstacle(), xPoint, yPoint);
+
+            Assert.AreEqual(iPlanet.Obstacles.First().Value, expectedPosition);
         }
     }
 }
