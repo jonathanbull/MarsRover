@@ -26,7 +26,15 @@ namespace MarsRover
                     }
                     break;
                 case Direction.Turning.Left:
-                    this.Position.CardinalDirection -= 1;
+                    if (this.Position.CardinalDirection == Direction.Cardinal.North)
+                    {
+                        // Bounds wrapping
+                        this.Position.CardinalDirection = Direction.Cardinal.West;
+                    }
+                    else
+                    {
+                        this.Position.CardinalDirection -= 1;
+                    }
                     break;
             }
         }
