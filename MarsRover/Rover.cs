@@ -19,6 +19,9 @@ namespace MarsRover
                     case 'F':
                         this.Position.Y += 1;
                         break;
+                    case 'B':
+                        this.Position.Y -= 1;
+                        break;
                 }
             }
         }
