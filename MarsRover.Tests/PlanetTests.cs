@@ -50,5 +50,11 @@ namespace MarsRover.Tests
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => iPlanet.SetSize(-1, 100));
         }
+
+        [Test]
+        public void SetHeightOutOfRange()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => iPlanet.SetSize(100, -1));
+        }
     }
 }
