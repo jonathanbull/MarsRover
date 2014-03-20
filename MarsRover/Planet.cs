@@ -30,6 +30,14 @@ namespace MarsRover
                 this.Obstacles = new Dictionary<Obstacle, Position>();
             }
 
+            if (xPoint < 0 ||
+                yPoint < 0 ||
+                xPoint > this.Size.Width ||
+                yPoint > this.Size.Height)
+            {
+                throw new ArgumentException("Obstacle cannot be placed outside the bounds of a planet.");
+            }
+
             var position = new Position(xPoint, yPoint);
 
             this.Obstacles.Add(obstacle, position);
