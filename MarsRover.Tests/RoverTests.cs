@@ -95,5 +95,14 @@ namespace MarsRover.Tests
             
             Assert.AreEqual(iRover.Position, expectedPosition);
         }
+
+        [TestCase(-1, 10)]
+        [TestCase(10, -1)]
+        [TestCase(99999, 10)]
+        [TestCase(10, 99999)]
+        public void DeployToErroneousPosition(int landingPositionX, int landingPositionY)
+        {
+            Assert.Throws<ArgumentException>(() => iRover.DeployTo(iPlanet, landingPositionX, landingPositionY, Movement.CardinalDirection.North));
+        }
     }
 }
