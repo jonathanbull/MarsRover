@@ -114,6 +114,14 @@ namespace MarsRover
         public void DeployTo(IPlanet planet, int landingPositionX, int landingPositionY, Movement.CardinalDirection landingCardinalDirection)
         {
             this.DeployedTo = planet;
+
+            if (landingPositionX < 0 ||
+                landingPositionY < 0 ||
+                landingPositionX > planet.Size.Width ||
+                landingPositionY > planet.Size.Height)
+            {
+                throw new ArgumentException("Rover cannot be deployed to a point outside the bounds of the planet.");
+            }
             this.Position = new Position(landingPositionX, landingPositionY, landingCardinalDirection);
         }
 
