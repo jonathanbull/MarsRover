@@ -20,7 +20,7 @@ namespace MarsRover.Tests
             iPlanet.SetSize(100, 50);
 
             iRover = new Rover();
-            iRover.DeployTo(iPlanet);
+            iRover.DeployTo(iPlanet, 0, 0, Movement.CardinalDirection.North);
         }
 
         [TestCase(0, 0, Movement.CardinalDirection.North, "F", 0, 1, Movement.CardinalDirection.North)]
@@ -41,13 +41,13 @@ namespace MarsRover.Tests
             int expectedYPosition,
             Movement.CardinalDirection expectedCardinalDirection)
         {
-            iRover.Position = new Position(startingXPosition, startingYPosition, startingCardinalDirection);
+            iRover.DeployTo(iPlanet, startingXPosition, startingYPosition, startingCardinalDirection);
 
             var expectedPosition = new Position(expectedXPosition, expectedYPosition, expectedCardinalDirection);
 
             iRover.Command(command);
 
-            Assert.AreEqual(expectedPosition, iRover.Position);
+            Assert.AreEqual(expectedPosition.Point.X, iRover.Position.Point.X);
         }
 
         [TestCase("RF", 1, 0)]
@@ -77,8 +77,23 @@ namespace MarsRover.Tests
         {
             var planet = new Planet();
             planet.SetSize(100, 50);
-            iRover.DeployTo(planet);
+            iRover.DeployTo(planet, 0, 0, Movement.CardinalDirection.North);
             Assert.IsNotNull(iRover.DeployedTo);
+        }
+
+        [TestCase(0, 0, Movement.CardinalDirection.North)]
+        [TestCase(10, 0, Movement.CardinalDirection.East)]
+        [TestCase(0, 10, Movement.CardinalDirection.South)]
+        [TestCase(30, 30, Movement.CardinalDirection.West)]
+        public void VerifyDeployedPosition(int landingPointX, int landingPointY, Movement.CardinalDirection landingCardinalDirection)
+        {
+            var planet = new Planet();
+            planet.SetSize(100, 50);
+            iRover.DeployTo(planet, landingPointX, landingPointY, landingCardinalDirection);
+            
+            var expectedPosition = new Position(landingPointX, landingPointY, landingCardinalDirection);
+            
+            Assert.AreEqual(iRover.Position, expectedPosition);
         }
     }
 }

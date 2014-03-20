@@ -14,6 +14,6 @@ namespace MarsRover
 
         void Command(string commands);
 
-        void DeployTo(IPlanet planet);
+        void DeployTo(IPlanet planet, int landingPositionX, int landingPositionY, Movement.CardinalDirection landingCardinalDirection);
     }
 }
