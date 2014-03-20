@@ -17,6 +17,7 @@ namespace MarsRover.Tests
         public void SetUp()
         {
             iPlanet = new Planet();
+            iPlanet.SetSize(100, 100);
         }
 
         [TestCase(100, 100)]
@@ -43,6 +44,15 @@ namespace MarsRover.Tests
             iPlanet.AddObstacle(new Obstacle(), xPoint, yPoint);
 
             Assert.AreEqual(iPlanet.Obstacles.First().Value, expectedPosition);
+        }
+
+        [TestCase(-1, 10)]
+        [TestCase(10, -1)]
+        [TestCase(101, 10)]
+        [TestCase(10, 101)]
+        public void AddObstacleAtErroneousPosition(int xPoint, int yPoint)
+        {
+            Assert.Throws<ArgumentException>(() => iPlanet.AddObstacle(new Obstacle(), xPoint, yPoint));
         }
 
         [TestCase(-1, 100)]
