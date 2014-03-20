@@ -114,6 +114,7 @@ namespace MarsRover
         public void DeployTo(IPlanet planet, int landingPositionX, int landingPositionY, Movement.CardinalDirection landingCardinalDirection)
         {
             this.DeployedTo = planet;
+            this.Position = new Position(landingPositionX, landingPositionY, landingCardinalDirection);
         }
 
         public Rover()
