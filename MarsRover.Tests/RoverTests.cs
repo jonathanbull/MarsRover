@@ -33,17 +33,17 @@ namespace MarsRover.Tests
         [TestCase(0, 50, Movement.CardinalHeading.North, "F", 0, 0, Movement.CardinalHeading.North)]
         [TestCase(100, 0, Movement.CardinalHeading.East, "F", 0, 0, Movement.CardinalHeading.East)]
         public void IssueCommandAndVerifyPosition(
-            int startingXPosition,
-            int startingYPosition,
+            int startingPointX,
+            int startingPointY,
             Movement.CardinalHeading startingCardinalHeading,
             string command,
-            int expectedXPosition,
-            int expectedYPosition,
+            int expectedPointX,
+            int expectedPointY,
             Movement.CardinalHeading expectedCardinalHeading)
         {
-            iRover.DeployTo(iPlanet, startingXPosition, startingYPosition, startingCardinalHeading);
+            iRover.DeployTo(iPlanet, startingPointX, startingPointY, startingCardinalHeading);
 
-            var expectedPosition = new Position(expectedXPosition, expectedYPosition, expectedCardinalHeading);
+            var expectedPosition = new Position(expectedPointX, expectedPointY, expectedCardinalHeading);
 
             iRover.Command(command);
 
@@ -55,9 +55,9 @@ namespace MarsRover.Tests
         [TestCase("LFFF", 100, 0)]
         [TestCase("RFLFFFLF", 1, 3)]
         [TestCase("BLF", 100, 50)]
-        public void IssueCommandAndCheckObstacleDetection(string command, int obstacleAtPositionX, int obstacleAtPositionY)
+        public void IssueCommandAndCheckObstacleDetection(string command, int obstacleAtPointX, int obstacleAtPointY)
         {
-            iPlanet.AddObstacle(new Obstacle(), obstacleAtPositionX, obstacleAtPositionY);
+            iPlanet.AddObstacle(new Obstacle(), obstacleAtPointX, obstacleAtPointY);
 
             Assert.Throws<DetectedObstacleException>(() => iRover.Command(command));
         }
@@ -100,9 +100,9 @@ namespace MarsRover.Tests
         [TestCase(10, -1)]
         [TestCase(99999, 10)]
         [TestCase(10, 99999)]
-        public void DeployToErroneousPosition(int landingPositionX, int landingPositionY)
+        public void DeployToErroneousPosition(int landingPointX, int landingPointY)
         {
-            Assert.Throws<ArgumentException>(() => iRover.DeployTo(iPlanet, landingPositionX, landingPositionY, Movement.CardinalHeading.North));
+            Assert.Throws<ArgumentException>(() => iRover.DeployTo(iPlanet, landingPointX, landingPointY, Movement.CardinalHeading.North));
         }
     }
 }

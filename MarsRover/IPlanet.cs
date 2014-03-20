@@ -15,7 +15,7 @@ namespace MarsRover
 
         void SetSize(int width, int height);
 
-        void AddObstacle(Obstacle obstacle, int xPoint, int yPoint);
+        void AddObstacle(Obstacle obstacle, int atPointX, int atPointY);
 
         bool HasObstacleAtPosition(Position position);
     }

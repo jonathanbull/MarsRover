@@ -23,22 +23,22 @@ namespace MarsRover
             this.Size = new Size(width, height);
         }
 
-        public void AddObstacle(Obstacle obstacle, int xPoint, int yPoint)
+        public void AddObstacle(Obstacle obstacle, int atPointX, int atPointY)
         {
             if (this.Obstacles == null)
             {
                 this.Obstacles = new Dictionary<Obstacle, Position>();
             }
 
-            if (xPoint < 0 ||
-                yPoint < 0 ||
-                xPoint > this.Size.Width ||
-                yPoint > this.Size.Height)
+            if (atPointX < 0 ||
+                atPointY < 0 ||
+                atPointX > this.Size.Width ||
+                atPointY > this.Size.Height)
             {
                 throw new ArgumentException("Obstacle cannot be placed outside the bounds of a planet.");
             }
 
-            var position = new Position(xPoint, yPoint);
+            var position = new Position(atPointX, atPointY);
 
             this.Obstacles.Add(obstacle, position);
         }

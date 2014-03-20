@@ -38,10 +38,10 @@ namespace MarsRover.Tests
         }
 
         [TestCase(5, 5)]
-        public void AddObstacleAtPosition(int xPoint, int yPoint)
+        public void AddObstacleAtPosition(int atPointX, int atPointY)
         {
-            var expectedPosition = new Position(xPoint, yPoint);
-            iPlanet.AddObstacle(new Obstacle(), xPoint, yPoint);
+            var expectedPosition = new Position(atPointX, atPointY);
+            iPlanet.AddObstacle(new Obstacle(), atPointX, atPointY);
 
             Assert.AreEqual(iPlanet.Obstacles.First().Value, expectedPosition);
         }
@@ -50,9 +50,9 @@ namespace MarsRover.Tests
         [TestCase(10, -1)]
         [TestCase(101, 10)]
         [TestCase(10, 101)]
-        public void AddObstacleAtErroneousPosition(int xPoint, int yPoint)
+        public void AddObstacleAtErroneousPosition(int atPointX, int atPointY)
         {
-            Assert.Throws<ArgumentException>(() => iPlanet.AddObstacle(new Obstacle(), xPoint, yPoint));
+            Assert.Throws<ArgumentException>(() => iPlanet.AddObstacle(new Obstacle(), atPointX, atPointY));
         }
 
         [TestCase(-1, 100)]
