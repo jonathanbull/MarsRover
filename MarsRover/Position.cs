@@ -11,7 +11,7 @@ namespace MarsRover
     {
         public Point Point { get; set; }
 
-        public Movement.CardinalDirection CardinalDirection { get; set; }
+        public Movement.CardinalHeading CardinalHeading { get; set; }
 
         public override bool Equals(object comparisonObject)
         {
@@ -29,7 +29,7 @@ namespace MarsRover
             return
                 this.Point.X == comparisonPosition.Point.X &&
                 this.Point.Y == comparisonPosition.Point.Y &&
-                this.CardinalDirection == comparisonPosition.CardinalDirection;
+                this.CardinalHeading == comparisonPosition.CardinalHeading;
         }
 
         public Position(int x, int y)
@@ -37,10 +37,10 @@ namespace MarsRover
             this.Point = new Point(x, y);
         }
 
-        public Position(int x, int y, Movement.CardinalDirection cardinalDirection)
+        public Position(int x, int y, Movement.CardinalHeading cardinalHeading)
         {
             this.Point = new Point(x, y);
-            this.CardinalDirection = cardinalDirection;
+            this.CardinalHeading = cardinalHeading;
         }
     }
 }

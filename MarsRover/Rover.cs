@@ -17,18 +17,18 @@ namespace MarsRover
         {
             int gridPoints = direction == Movement.Direction.Forwards ? 1 : -1;
 
-            switch (this.Position.CardinalDirection)
+            switch (this.Position.CardinalHeading)
             {
-                case Movement.CardinalDirection.North:
+                case Movement.CardinalHeading.North:
                     this.Position.Point = new Point(this.Position.Point.X, this.Position.Point.Y + gridPoints);
                     break;
-                case Movement.CardinalDirection.East:
+                case Movement.CardinalHeading.East:
                     this.Position.Point = new Point(this.Position.Point.X + gridPoints, this.Position.Point.Y);
                     break;
-                case Movement.CardinalDirection.South:
+                case Movement.CardinalHeading.South:
                     this.Position.Point = new Point(this.Position.Point.X, this.Position.Point.Y - gridPoints);
                     break;
-                case Movement.CardinalDirection.West:
+                case Movement.CardinalHeading.West:
                     this.Position.Point = new Point(this.Position.Point.X - gridPoints, this.Position.Point.Y);
                     break;
             }
@@ -63,25 +63,25 @@ namespace MarsRover
             switch (turn)
             {
                 case Movement.TurningDirection.Right:
-                    if (this.Position.CardinalDirection == Movement.CardinalDirection.West)
+                    if (this.Position.CardinalHeading == Movement.CardinalHeading.West)
                     {
                         // Bounds wrapping
-                        this.Position.CardinalDirection = Movement.CardinalDirection.North;
+                        this.Position.CardinalHeading = Movement.CardinalHeading.North;
                     }
                     else
                     {
-                        this.Position.CardinalDirection += 1;
+                        this.Position.CardinalHeading += 1;
                     }
                     break;
                 case Movement.TurningDirection.Left:
-                    if (this.Position.CardinalDirection == Movement.CardinalDirection.North)
+                    if (this.Position.CardinalHeading == Movement.CardinalHeading.North)
                     {
                         // Bounds wrapping
-                        this.Position.CardinalDirection = Movement.CardinalDirection.West;
+                        this.Position.CardinalHeading = Movement.CardinalHeading.West;
                     }
                     else
                     {
-                        this.Position.CardinalDirection -= 1;
+                        this.Position.CardinalHeading -= 1;
                     }
                     break;
             }
@@ -111,7 +111,7 @@ namespace MarsRover
             }
         }
 
-        public void DeployTo(IPlanet planet, int landingPositionX, int landingPositionY, Movement.CardinalDirection landingCardinalDirection)
+        public void DeployTo(IPlanet planet, int landingPositionX, int landingPositionY, Movement.CardinalHeading landingCardinalHeading)
         {
             this.DeployedTo = planet;
 
@@ -122,7 +122,7 @@ namespace MarsRover
             {
                 throw new ArgumentException("Rover cannot be deployed to a point outside the bounds of the planet.");
             }
-            this.Position = new Position(landingPositionX, landingPositionY, landingCardinalDirection);
+            this.Position = new Position(landingPositionX, landingPositionY, landingCardinalHeading);
         }
 
         public Rover()

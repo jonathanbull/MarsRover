@@ -14,7 +14,7 @@ namespace MarsRover
             Backwards
         }
 
-        public enum CardinalDirection
+        public enum CardinalHeading
         {
             North,
             East,

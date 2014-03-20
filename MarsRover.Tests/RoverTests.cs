@@ -20,30 +20,30 @@ namespace MarsRover.Tests
             iPlanet.SetSize(100, 50);
 
             iRover = new Rover();
-            iRover.DeployTo(iPlanet, 0, 0, Movement.CardinalDirection.North);
+            iRover.DeployTo(iPlanet, 0, 0, Movement.CardinalHeading.North);
         }
 
-        [TestCase(0, 0, Movement.CardinalDirection.North, "F", 0, 1, Movement.CardinalDirection.North)]
-        [TestCase(0, 0, Movement.CardinalDirection.North, "FFB", 0, 1, Movement.CardinalDirection.North)]
-        [TestCase(0, 0, Movement.CardinalDirection.North, "R", 0, 0, Movement.CardinalDirection.East)]
-        [TestCase(0, 0, Movement.CardinalDirection.South, "L", 0, 0, Movement.CardinalDirection.East)]
-        [TestCase(0, 0, Movement.CardinalDirection.West, "R", 0, 0, Movement.CardinalDirection.North)]
-        [TestCase(0, 0, Movement.CardinalDirection.North, "L", 0, 0, Movement.CardinalDirection.West)]
-        [TestCase(0, 0, Movement.CardinalDirection.North, "FFRFF", 2, 2, Movement.CardinalDirection.East)]
-        [TestCase(0, 50, Movement.CardinalDirection.North, "F", 0, 0, Movement.CardinalDirection.North)]
-        [TestCase(100, 0, Movement.CardinalDirection.East, "F", 0, 0, Movement.CardinalDirection.East)]
+        [TestCase(0, 0, Movement.CardinalHeading.North, "F", 0, 1, Movement.CardinalHeading.North)]
+        [TestCase(0, 0, Movement.CardinalHeading.North, "FFB", 0, 1, Movement.CardinalHeading.North)]
+        [TestCase(0, 0, Movement.CardinalHeading.North, "R", 0, 0, Movement.CardinalHeading.East)]
+        [TestCase(0, 0, Movement.CardinalHeading.South, "L", 0, 0, Movement.CardinalHeading.East)]
+        [TestCase(0, 0, Movement.CardinalHeading.West, "R", 0, 0, Movement.CardinalHeading.North)]
+        [TestCase(0, 0, Movement.CardinalHeading.North, "L", 0, 0, Movement.CardinalHeading.West)]
+        [TestCase(0, 0, Movement.CardinalHeading.North, "FFRFF", 2, 2, Movement.CardinalHeading.East)]
+        [TestCase(0, 50, Movement.CardinalHeading.North, "F", 0, 0, Movement.CardinalHeading.North)]
+        [TestCase(100, 0, Movement.CardinalHeading.East, "F", 0, 0, Movement.CardinalHeading.East)]
         public void IssueCommandAndVerifyPosition(
             int startingXPosition,
             int startingYPosition,
-            Movement.CardinalDirection startingCardinalDirection,
+            Movement.CardinalHeading startingCardinalHeading,
             string command,
             int expectedXPosition,
             int expectedYPosition,
-            Movement.CardinalDirection expectedCardinalDirection)
+            Movement.CardinalHeading expectedCardinalHeading)
         {
-            iRover.DeployTo(iPlanet, startingXPosition, startingYPosition, startingCardinalDirection);
+            iRover.DeployTo(iPlanet, startingXPosition, startingYPosition, startingCardinalHeading);
 
-            var expectedPosition = new Position(expectedXPosition, expectedYPosition, expectedCardinalDirection);
+            var expectedPosition = new Position(expectedXPosition, expectedYPosition, expectedCardinalHeading);
 
             iRover.Command(command);
 
@@ -77,21 +77,21 @@ namespace MarsRover.Tests
         {
             var planet = new Planet();
             planet.SetSize(100, 50);
-            iRover.DeployTo(planet, 0, 0, Movement.CardinalDirection.North);
+            iRover.DeployTo(planet, 0, 0, Movement.CardinalHeading.North);
             Assert.IsNotNull(iRover.DeployedTo);
         }
 
-        [TestCase(0, 0, Movement.CardinalDirection.North)]
-        [TestCase(10, 0, Movement.CardinalDirection.East)]
-        [TestCase(0, 10, Movement.CardinalDirection.South)]
-        [TestCase(30, 30, Movement.CardinalDirection.West)]
-        public void VerifyDeployedPosition(int landingPointX, int landingPointY, Movement.CardinalDirection landingCardinalDirection)
+        [TestCase(0, 0, Movement.CardinalHeading.North)]
+        [TestCase(10, 0, Movement.CardinalHeading.East)]
+        [TestCase(0, 10, Movement.CardinalHeading.South)]
+        [TestCase(30, 30, Movement.CardinalHeading.West)]
+        public void VerifyDeployedPosition(int landingPointX, int landingPointY, Movement.CardinalHeading landingCardinalHeading)
         {
             var planet = new Planet();
             planet.SetSize(100, 50);
-            iRover.DeployTo(planet, landingPointX, landingPointY, landingCardinalDirection);
+            iRover.DeployTo(planet, landingPointX, landingPointY, landingCardinalHeading);
             
-            var expectedPosition = new Position(landingPointX, landingPointY, landingCardinalDirection);
+            var expectedPosition = new Position(landingPointX, landingPointY, landingCardinalHeading);
             
             Assert.AreEqual(iRover.Position, expectedPosition);
         }
@@ -102,7 +102,7 @@ namespace MarsRover.Tests
         [TestCase(10, 99999)]
         public void DeployToErroneousPosition(int landingPositionX, int landingPositionY)
         {
-            Assert.Throws<ArgumentException>(() => iRover.DeployTo(iPlanet, landingPositionX, landingPositionY, Movement.CardinalDirection.North));
+            Assert.Throws<ArgumentException>(() => iRover.DeployTo(iPlanet, landingPositionX, landingPositionY, Movement.CardinalHeading.North));
         }
     }
 }
